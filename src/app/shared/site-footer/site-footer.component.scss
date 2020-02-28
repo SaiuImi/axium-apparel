@@ -1,0 +1,23 @@
+.footer {
+	background-color: #000;
+	color: #fff;
+	font-size: 14px;
+	.row {
+		padding: 30px 0;
+		.footer-menu {
+			text-align: right;
+			line-height: 34px;
+			.icon {
+				padding-left: 10px;
+			}
+		}
+	}
+	@media (max-width: 767px) {
+		.row {
+			.footer-menu {
+				text-align: left;
+				padding: 20px;
+			}
+		}
+	}
+}

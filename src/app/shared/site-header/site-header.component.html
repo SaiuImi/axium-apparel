@@ -1,0 +1,31 @@
+
+<div class="banner">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<img class="logo" src="../../../assets/images/axiom-logo-main.png">
+			</div>
+			<div class="col-md-6">
+				<div class="search-and-nav">
+					<input class="form-control" type="search" id="global-search" placeholder="SEARCH FOR GEAR">
+					<img class="icon clicable" src="../../../assets/images/fb-icon.png">
+					<img class="icon clicable" src="../../../assets/images/twitter-icon.png">
+					<span class="clicable">My Account &nbsp; | &nbsp; Cart &nbsp; | &nbsp; Logout</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="menu">
+	<div class="container">
+		<span class="dropdown" *ngFor="let menuEntry of menu">
+			<span class="menu-dropdown-toggle clicable" data-toggle="dropdown">
+				{{menuEntry.name}}&nbsp;
+				<img class="icon clicable" src="../../../assets/images/down-tip.png">
+			</span>
+			<div *ngIf="menuEntry.subMenu.length > 0" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				<a *ngFor="let subMenuEntry of menuEntry.subMenu" class="dropdown-item clicable">{{subMenuEntry}}</a>
+			</div>
+		</span>
+	</div>
+</div>
