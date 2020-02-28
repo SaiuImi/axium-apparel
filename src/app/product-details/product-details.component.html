@@ -42,6 +42,18 @@
 		</div>
 	</div>
 </div>
-
+<div class="reviews">
+	<div class="container">
+		<h2>Reviews</h2> <a>Write a review on this product</a>
+		<div class="review" *ngFor="let review of userReviews">
+			<label>{{review.userName}}</label>
+			<img src="../../../assets/images/reviewer{{review.userId}}.png">
+			<label>{{review.title}}</label>
+			<span>{{review.date}}</span>
+			<img *ngFor="let item of [].constructor(review.rate)" src="../../../assets/images/star.png">
+			<p>{{review.content}}</p>
+		</div>
+	</div>
+</div>
 
 <router-outlet name="site-footer"></router-outlet>
