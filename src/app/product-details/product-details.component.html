@@ -8,7 +8,7 @@
 			</div>
 			<div class="col-xl-6">
 				<div class="product-details-text">
-					<label>Tough Mojo Jacket®</label>
+					<label>{{productName}}</label>
 					<p>
 						300 GRAMS OF PRIMALOFT® ONE INSULATION<br>
 						SCHOELLER® MICROFIBER SHELL<br>
@@ -45,11 +45,55 @@
 <div class="reviews">
 	<div class="container">
 		<h2>Reviews</h2> <a>Write a review on this product</a>
+
+		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+			Write a review on this product
+		</button>
+	
+		<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-content">
+				
+					<form [formGroup]="reviewForm" (ngSubmit)="onSubmit(reviewForm.value)">
+						<div class="modal-body">
+
+						<div>
+							<label for="title">
+								Review Title:
+							</label>
+							<input id="title" type="text" formControlName="title">
+						</div>
+						Please Rate the {{productName}}
+						<div>
+							<label for="content">
+							Write your review
+							</label>
+							<input id="content" type="text" formControlName="content" placeholder="- Write your review here -">
+						</div>
+						
+						
+					</div>
+					<div class="modal-footer">
+						<button type="submit" class="btn btn-primary">Submit Review</button>
+					</div>
+					
+				</form>
+					
+				</div>
+			</div>
+		</div>
+
+
+
+
 		<div class="review" *ngFor="let review of userReviews">
 			<label>{{review.userName}}</label>
-			<img src="../../../assets/images/reviewer{{review.userId}}.png">
+			<img *ngIf="review.userId; else noAvatar" src="../../../assets/images/reviewer{{review.userId}}.png">
+			<ng-template #noAvatar>
+				<img src="../../../assets/images/reviewer-default.png">
+			</ng-template>
 			<label>{{review.title}}</label>
-			<span>{{review.date}}</span>
+			<span>{{review.date| date:'MM-dd-yyyy'}}</span>
 			<img *ngFor="let item of [].constructor(review.rate)" src="../../../assets/images/star.png">
 			<p>{{review.content}}</p>
 		</div>

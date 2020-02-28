@@ -1,18 +1,31 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
-  styleUrls: ['./product-details.component.scss']
+  styleUrls: ['./product-details.component.scss'],
+  providers: [DatePipe]
 })
 export class ProductDetailsComponent implements OnInit {
-
+  productName: string;
   userReviews: Array<object>;
+  reviewForm;
 
-  constructor() { }
+  constructor(
+    private formBuilder: FormBuilder
+  ) {
+    this.reviewForm = this.formBuilder.group({
+      rate: 2,
+      title: '',
+      content: ''
+    });
+  }
 
   ngOnInit() {
-    // mock data for reviews
+    // mock data
+    this.productName = 'Tough Mojo Jacket®';
     this.userReviews = [
       {
         userName: 'Shaun White',
@@ -34,4 +47,12 @@ export class ProductDetailsComponent implements OnInit {
       }
     ];
   }
+
+  onSubmit(formData) {
+    formData.userName = 'Dummy'; // no login functioning so mock
+    formData.date = new Date();
+    this.userReviews.push(formData);
+    this.reviewForm.reset();
+  }
+
 }
