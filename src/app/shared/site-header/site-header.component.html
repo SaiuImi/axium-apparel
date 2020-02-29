@@ -19,11 +19,11 @@
 <div class="menu">
 	<div class="container">
 		<span class="dropdown" *ngFor="let menuEntry of menu">
-			<span class="menu-dropdown-toggle clicable" data-toggle="dropdown">
+			<span class="menu-dropdown-toggle clicable" data-toggle="dropdown" data-offset="-60,10">
 				{{menuEntry.name}}&nbsp;
 				<img class="icon clicable" src="../../../assets/images/down-tip.png">
 			</span>
-			<div *ngIf="menuEntry.subMenu.length > 0" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+			<div [hidden]="menuEntry.subMenu.length == 0" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 				<a *ngFor="let subMenuEntry of menuEntry.subMenu" class="dropdown-item clicable">{{subMenuEntry}}</a>
 			</div>
 		</span>
