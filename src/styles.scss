@@ -1,9 +1,28 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 html, body {
+	height: 100%;
 	font-family: 'Raleway', 'Roboto', sans-serif;
 	letter-spacing: 0.5px;
 }
 
 .clicable {
   cursor: pointer;
+}
+
+.btn-primary {
+	font-size: 14px;
+	background-color: #4698a4;
+	border-color: #616d79;
+	padding: 7px 15px;
+	border-radius: 2px;
+}
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active{
+	background-color: #197886 !important;
+	border-color: #11535d !important;
+}
+.btn-primary:disabled, .btn-primary:disabled:hover {
+	cursor: default;
+	background-color: #8f8f8f !important;
+	border-color: #8f8f8f !important;
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-product-details',
@@ -12,12 +13,13 @@ export class ProductDetailsComponent implements OnInit {
   productName: string;
   userReviews: Array<object>;
   reviewForm;
+  userRate = 0;
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private dialog: MatDialog
   ) {
     this.reviewForm = this.formBuilder.group({
-      rate: 2,
       title: '',
       content: ''
     });
@@ -48,11 +50,33 @@ export class ProductDetailsComponent implements OnInit {
     ];
   }
 
-  onSubmit(formData) {
-    formData.userName = 'Dummy'; // no login functioning so mock
-    formData.date = new Date();
-    this.userReviews.push(formData);
-    this.reviewForm.reset();
+  openDialog(ref, width, height) {
+    this.dialog.open(ref, {
+      width: width + 'px',
+      height: height + 'px'
+    });
   }
 
+  onRate(event: {newValue: number}, formData) {
+    this.userRate = event.newValue;
+  }
+
+  isReviewValid(formData) {
+    if (!formData.title || !formData.content || this.userRate === 0) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+
+  onSubmitReview(formData) {
+    if (this.isReviewValid(formData)) {
+      formData.userName = 'Dummy'; // no login functioning so mock
+      formData.date = new Date();
+      formData.rate = this.userRate;
+      this.userReviews.push(formData);
+      this.userRate = 0;
+      this.reviewForm.reset();
+    }
+  }
 }

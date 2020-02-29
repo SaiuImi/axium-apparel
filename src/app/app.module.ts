@@ -1,11 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { RatingModule } from 'ng-starrating';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MatDialogModule } from '@angular/material/dialog';
 import { SharedModule } from './shared/shared.module';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,10 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    SharedModule
+    RatingModule,
+    MatDialogModule,
+    SharedModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

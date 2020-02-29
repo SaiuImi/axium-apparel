@@ -19,7 +19,7 @@
 						3-IN-1 FRONT POCKETS<br>
 						ZIPPERED CHEST POCKET<br>
 						TWO INTERIOR ZIPPERED POCKETS<br>
-						MAD IN THE PHILIPPINES<br>
+						MADE IN THE PHILIPPINES<br>
 					</p>
 				</div>
 			</div>
@@ -46,46 +46,9 @@
 	<div class="container">
 		<h2>Reviews</h2> <a>Write a review on this product</a>
 
-		<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+		<button type="button" class="btn btn-primary" (click)="openDialog(writeReviewDialog, 620, 330)">
 			Write a review on this product
 		</button>
-	
-		<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered" role="document">
-				<div class="modal-content">
-				
-					<form [formGroup]="reviewForm" (ngSubmit)="onSubmit(reviewForm.value)">
-						<div class="modal-body">
-
-						<div>
-							<label for="title">
-								Review Title:
-							</label>
-							<input id="title" type="text" formControlName="title">
-						</div>
-						Please Rate the {{productName}}
-						<div>
-							<label for="content">
-							Write your review
-							</label>
-							<input id="content" type="text" formControlName="content" placeholder="- Write your review here -">
-						</div>
-						
-						
-					</div>
-					<div class="modal-footer">
-						<button type="submit" class="btn btn-primary">Submit Review</button>
-					</div>
-					
-				</form>
-					
-				</div>
-			</div>
-		</div>
-
-
-
-
 		<div class="review" *ngFor="let review of userReviews">
 			<label>{{review.userName}}</label>
 			<img *ngIf="review.userId; else noAvatar" src="../../../assets/images/reviewer{{review.userId}}.png">
@@ -99,5 +62,31 @@
 		</div>
 	</div>
 </div>
+<ng-template #writeReviewDialog>
+	<div class="writeReviewDialog content-section">
+		<form [formGroup]="reviewForm" (ngSubmit)="onSubmitReview(reviewForm.value)">
+			<span>Please Rate the <b>{{productName}}</b>
+				<star-rating 
+					[value]="userRate"
+					totalstars="5"
+					checkedcolor="#4e9ea5"
+					uncheckedcolor="#c4e1e4"
+					size="24px" readonly="false"
+					(rate)="onRate($event,reviewForm.value)">
+				</star-rating>
+			</span>
+			<div>
+				<span>
+					Review Title:&nbsp;
+					<input id="title" type="text" formControlName="title">
+				</span>
+			</div>
+			<div>
+				<textarea id="content" formControlName="content" placeholder="- Write your review here -"></textarea>
+			</div>
+			<button type="submit" matDialogClose [disabled]="!isReviewValid(reviewForm.value)" class="btn btn-primary" (click)="onSubmitReview(reviewForm.value)">Submit Review</button>
+		</form>
+	</div>
+</ng-template>
 
 <router-outlet name="site-footer"></router-outlet>
