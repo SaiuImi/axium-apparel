@@ -8,7 +8,7 @@ const routes: Routes = [
   { path: 'account', loadChildren: () => import('./account/account.module').then(m => m.AccountModule) },
   { path: 'cart', loadChildren: () => import('./cart/cart.module').then(m => m.CartModule) },
   { path: 'login', loadChildren: () => import('./login/login.module').then(m => m.LoginModule) },
-  { path: 'product-details', component: ProductDetailsComponent, data: {title: 'Product Details'},
+  { path: 'product-details/:id', component: ProductDetailsComponent, data: {title: 'Product Details'},
     children: [
       { path: '', component: SiteHeaderComponent, outlet: 'site-header' },
       { path: '', component: SiteFooterComponent, outlet: 'site-footer' }

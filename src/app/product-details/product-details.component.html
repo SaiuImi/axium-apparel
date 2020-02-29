@@ -1,26 +1,17 @@
 <router-outlet name="site-header"></router-outlet>
 <div class="product-details">
 	<div class="container">
-		<div class="nav"><a>Clothing</a> &nbsp; > &nbsp; <b>Outerwear</b></div>
+		<div class="nav"><a>{{productDetail.catalog}}</a> &nbsp; > &nbsp; <b>{{productDetail.subCatalog}}</b></div>
 		<div class="row">
 			<div class="col-xl-6">
 				<img class="product-image" src="../../../assets/images/tough-mojo-jacket-img1.png">
 			</div>
 			<div class="col-xl-6">
 				<div class="product-details-text">
-					<label>{{productName}}</label>
-					<p>
-						300 GRAMS OF PRIMALOFT® ONE INSULATION<br>
-						SCHOELLER® MICROFIBER SHELL<br>
-						DIAGONAL QUILTING<br>
-						MICROFIBER RIPSTOP LINER<br>
-						ZIPPER GARAGE AT COLLAR<br>
-						ANCHORED BOTTOM-HEM ADJUSTERS<br>
-						3-IN-1 FRONT POCKETS<br>
-						ZIPPERED CHEST POCKET<br>
-						TWO INTERIOR ZIPPERED POCKETS<br>
-						MADE IN THE PHILIPPINES<br>
+					<label>{{productDetail.name}}</label>
+					<p [innerHTML]="productDetail.description">
 					</p>
+					<img src="../../../assets/images/temp-bottons.png">
 				</div>
 			</div>
 		</div>
@@ -83,11 +74,11 @@
 			<div>
 				<span>
 					Review Title:&nbsp;
-					<input id="title" type="text" formControlName="title">
+					<input id="title" type="text" formControlName="title" autocomplete="off">
 				</span>
 			</div>
 			<div>
-				<textarea id="content" formControlName="content" placeholder="- Write your review here -"></textarea>
+				<textarea id="content" formControlName="content" placeholder="- Write your review here -" autocomplete="off"></textarea>
 			</div>
 			<button type="submit" matDialogClose [disabled]="!isReviewValid(reviewForm.value)" class="btn btn-primary" (click)="onSubmitReview(reviewForm.value)">Submit Review</button>
 		</form>

@@ -8,6 +8,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { SharedModule } from './shared/shared.module';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ProductDetailsService } from './product-details/product-details.service';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SharedModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    ProductDetailsService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
