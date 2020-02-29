@@ -6,6 +6,11 @@ html, body {
 	letter-spacing: 0.5px;
 }
 
+a {
+	text-decoration: underline;
+	cursor: pointer;
+}
+
 .clicable {
   cursor: pointer;
 }

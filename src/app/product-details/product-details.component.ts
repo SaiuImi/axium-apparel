@@ -62,7 +62,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   isReviewValid(formData) {
-    if (!formData.title || !formData.content || this.userRate === 0) {
+    if (!formData.title.trim() || !formData.content.trim() || this.userRate === 0) {
       return false;
     } else {
       return true;

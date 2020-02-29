@@ -1,7 +1,7 @@
 <router-outlet name="site-header"></router-outlet>
 <div class="product-details">
 	<div class="container">
-		<span><a>Clothing</a> > <b>Outerwear</b></span>
+		<div class="nav"><a>Clothing</a> &nbsp; > &nbsp; <b>Outerwear</b></div>
 		<div class="row">
 			<div class="col-xl-6">
 				<img class="product-image" src="../../../assets/images/tough-mojo-jacket-img1.png">
@@ -44,21 +44,26 @@
 </div>
 <div class="reviews">
 	<div class="container">
-		<h2>Reviews</h2> <a>Write a review on this product</a>
-
-		<button type="button" class="btn btn-primary" (click)="openDialog(writeReviewDialog, 620, 330)">
-			Write a review on this product
-		</button>
-		<div class="review" *ngFor="let review of userReviews">
-			<label>{{review.userName}}</label>
-			<img *ngIf="review.userId; else noAvatar" src="../../../assets/images/reviewer{{review.userId}}.png">
-			<ng-template #noAvatar>
-				<img src="../../../assets/images/reviewer-default.png">
-			</ng-template>
-			<label>{{review.title}}</label>
-			<span>{{review.date| date:'MM-dd-yyyy'}}</span>
-			<img *ngFor="let item of [].constructor(review.rate)" src="../../../assets/images/star.png">
-			<p>{{review.content}}</p>
+		<div class="row">
+			<div class="col-lg-2"></div>
+			<div class="col-lg-10 review-panel-title">
+				<h2>Reviews</h2> <a (click)="openDialog(writeReviewDialog, 620, 330)">Write a review on this product</a>
+			</div>
+		</div>
+		<div class="row" *ngFor="let review of userReviews">
+			<div class="col-lg-2 user-panel">
+				<img *ngIf="review.userId; else noAvatar" src="../../../assets/images/reviewer{{review.userId}}.png">
+				<ng-template #noAvatar>
+					<img src="../../../assets/images/reviewer-default.png">
+				</ng-template>
+				<label><b>{{review.userName}}</b></label>
+			</div>
+			<div class="col-lg-10 content-panel">
+				<label>{{review.title}}</label>
+				<span>{{review.date| date:'MM-dd-yyyy'}}</span>
+				<img *ngFor="let item of [].constructor(review.rate)" src="../../../assets/images/star.png">
+				<p>{{review.content}}</p>
+			</div>
 		</div>
 	</div>
 </div>
