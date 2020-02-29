@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RatingModule } from 'ng-starrating';
@@ -26,7 +26,8 @@ import { ProductDetailsService } from './product-details/product-details.service
     BrowserAnimationsModule
   ],
   providers: [
-    ProductDetailsService
+    ProductDetailsService,
+    Title
   ],
   bootstrap: [AppComponent]
 })

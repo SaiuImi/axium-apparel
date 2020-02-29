@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder } from '@angular/forms';
 import { DatePipe } from '@angular/common';
@@ -19,6 +20,7 @@ export class ProductDetailsComponent implements OnInit {
   userRate = 0;
 
   constructor(
+    private titleService: Title,
     private formBuilder: FormBuilder,
     private dialog: MatDialog,
     private productDetailsService: ProductDetailsService,
@@ -31,6 +33,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.titleService.setTitle('Axium Apparel - Product Details');
     this.productId = this.activeRoute.snapshot.params.id;
     this.productDetail = this.productDetailsService.getProductDetails(this.productId);
     this.userReviews = this.productDetailsService.getUserReviews(this.productId);
