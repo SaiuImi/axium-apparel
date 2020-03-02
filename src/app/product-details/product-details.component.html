@@ -61,7 +61,7 @@
 <ng-template #writeReviewDialog>
 	<div class="writeReviewDialog content-section">
 		<form [formGroup]="reviewForm" (ngSubmit)="onSubmitReview(reviewForm.value)">
-			<span>Please Rate the <b>{{productName}}</b>
+			<span>Please Rate the <b>{{productDetail.name}}</b>
 				<star-rating 
 					[value]="userRate"
 					totalstars="5"

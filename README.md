@@ -1,5 +1,7 @@
 # AxiumApparel
 
+A demo project for Axium Apparel. To get access to the demo page, go to http://localhost:4200/product-details/1
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.14.
 
 ## Development server
